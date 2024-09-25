@@ -1,5 +1,4 @@
 import random
-import time
 import json
 import math
 
@@ -28,6 +27,7 @@ def create_bees(flowers):
 def create_bee(flowers):
     bee = random.sample(flowers,len(flowers))
     bee.insert(0, HIVE_POSITION)
+    bee.insert(-1, HIVE_POSITION)
     return bee
 
 def calculate_distance(pointA, pointD):
@@ -45,7 +45,6 @@ def get_distance(bees):
             flower_2 = bee[i + 1]
             distance += calculate_distance(flower_1,flower_2)
         total_distance.append(round(distance, 2))
-
     return total_distance
 
 if __name__ == "__main__":
