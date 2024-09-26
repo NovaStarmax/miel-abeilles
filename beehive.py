@@ -20,16 +20,12 @@ class Beehive:
         bee.insert(0, self.hive_position)
         bee.insert(-1, self.hive_position)
         return bee 
-    
-    def select_bees(self):
-        for i in range(len(self.bees)):
-            if random.random < self.selected_bees:
-                return 
-            
-    def mutate_bees(self):
-        for i in range(len(self.bees)):
-            if random.random < self.mutation_frequency:
-                return 
+         
+
+    #def mutate_bees(self, bees):
+        #for i in range(len(bees)):
+            #if random.random < self.mutation_frequency:
+                #return 
             
     def cross_bees():
         pass
@@ -39,3 +35,36 @@ class Beehive:
         #for bee in self.bees:
             
         #self.bees[:10]
+        
+        
+# def tournamentSelection(generation, Ntour):
+#     """
+#     Permet le choix aléatoire de meilleurs individus de la génération.
+ 
+#     @parameters:
+#         generation: une liste de tuples (individu, fitnessValue)
+#         Ntour: un entier (integer)
+ 
+#     @return:
+#         populationSelection: une liste
+#     """
+ 
+#     populationSelection = [] # Création de notre variable de sortie
+ 
+#     for i in range(len(generation)):
+#         populationRandom = [] # Création de notre liste de sélection aléatoire
+ 
+#         for j in range(Ntour):
+#             populationRandom.append(generation[random.randrange(len(generation))]) # On choisit aléatoirement des 
+# # individus de la génération
+         
+#         populationRandom = sorted(populationRandom, key=lambda x: x[1]) # Trier en fonction de la valeur du fitness
+#         populationSelection.append(populationRandom[0]) # Ajouter à notre variable de sortie l'individu ayant le 
+# # meilleur fitness
+ 
+#     populationSelection = sorted(populationSelection, key=lambda x: x[1]) # Trier en fonction du fitness
+#     a = populationSelection[:] # Faire une copie de la variable de sortie
+#     for i in range(len(a)):
+#         populationSelection[i] = a[i][0] # On choisit l'individu sans le fitness
+ 
+#     return populationSelection

@@ -8,5 +8,8 @@ if __name__ == "__main__":
     h = Beehive()
     flowers = b.get_flowers()
     list_bees = h.create_bees(flowers)
-    print(b.get_distance(list_bees))
+    distances = b.get_distance(list_bees)
+    for i, distance in enumerate(distances, start=1):
+        print(f"Bee {i}: {distance} km")
+    
     print("#####################################################################################")
