@@ -19,9 +19,11 @@ def get_flowers():
 if __name__ == "__main__":
     print("#####################################################################################")
     flowers = get_flowers()
-
     h = Beehive(flowers)
     for i, bee in enumerate(h.list_bees()):
         print(f"Bee {i + 1}: {round(bee.get_distance(), 2)} km")
+    
+    ordered_bee = h.get_ordered_bee()
+    print(ordered_bee)
     
     print("#####################################################################################")
