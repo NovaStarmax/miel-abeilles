@@ -18,15 +18,9 @@ class Beehive:
     def __str__(self):
         return f"This is a sorted bee {self.sorted_bees}"
 
-    def ordered_bees(self):
-        self.sorted_bees = []
-        for bee in self.bees:
-            sorted(bee)
-            self.sorted_bees.append(bee)
+    def sort_bees(self):
+        self.bees.sort(key=lambda bee: bee.get_distance())
 
-    def get_ordered_bee(self):
-        print("bee sorted : ", self.sorted_bees)
-        return self.sorted_bees
 
     #def mutate_bees(self, bees):
         #for i in range(len(bees)):

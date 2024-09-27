@@ -8,6 +8,9 @@ class Bee:
         self.create_path(flowers)
         self.compute_path()
 
+    def __str__(self):
+        return f"Bee: {self.distance}"
+
     def create_path(self, flowers):
         self.path = random.sample(flowers, len(flowers))
         self.path.insert(0, HIVE_POSITION)
