@@ -2,7 +2,6 @@ import json
 from bee import Bee
 from beehive import Beehive
 
-
 def get_flowers():
     position_flowers = []
 
@@ -20,10 +19,20 @@ if __name__ == "__main__":
     print("#####################################################################################")
     flowers = get_flowers()
     h = Beehive(flowers)
+    # b = Bee(flowers)
+
     for i, bee in enumerate(h.list_bees()):
-        print(f"Bee {i + 1}: {round(bee.get_distance(), 2)} km")
+        print(f"Bee {i + 1}: {bee}")
     
-    h.sort_bees()
-    [print(bee) for bee in h.bees]
+    # for i, bee in enumerate(h.list_bees()):
+    #     print(f"Bee {i + 1}: {round(bee.get_distance(), 2)} km")
+    # print(b.path())
+    
+    h.mutate_bees(h.list_bees())
+
+    # h.sort_bees()
+    # [print(bee) for bee in h.bees]
+    # for bee in h.bees:
+    #     print(f"Bee: {bee}, Distance: {round(bee.get_distance(), 2)}")
     
     print("#####################################################################################")

@@ -9,7 +9,11 @@ class Bee:
         self.compute_path()
 
     def __str__(self):
-        return f"Bee: {self.distance}"
+        return f" Distance = {round(self.distance, 2)} km, Path = {self.path}"
+
+    # def __str__(self):
+    #     # return f"Bee: {self.distance}"
+    #     return self.path
 
     def create_path(self, flowers):
         self.path = random.sample(flowers, len(flowers))
