@@ -11,10 +11,6 @@ class Bee:
     def __str__(self):
         return f" Distance = {round(self.distance, 2)} km, Path = {self.path}"
 
-    # def __str__(self):
-    #     # return f"Bee: {self.distance}"
-    #     return self.path
-
     def create_path(self, flowers):
         self.path = random.sample(flowers, len(flowers))
         self.path.insert(0, HIVE_POSITION)
