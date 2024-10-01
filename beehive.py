@@ -1,4 +1,4 @@
-from config import NB_BEES,SELECTED_BEES
+from config import NB_BEES,SELECTED_BEES, MUTATION_RATE
 from bee import Bee
 import random
 class Beehive:
@@ -25,11 +25,24 @@ class Beehive:
         return selected_bees
 
     def mutate_bees(self):
-        for bee in self.bees:
+        # bees_mutated = self.bees * MUTATION_RATE
+        for bee in self.bees: #bees_mutated:
             a = random.randint(1,len(bee.path)-2)
             b = random.randint(1,len(bee.path)-2)
-            if a != b:
+            if bee.path[a] != bee.path[b]:
+                old_distance = bee.get_distance()
+                print("_____________________")
+                print(old_distance,"OLD distance")
+                print(bee.path[a],"PATH AAA BEFORE")
+                print(bee.path[b],"PATH BBB BEFORE")
                 bee.path[a], bee.path[b] = bee.path[b], bee.path[a]
+                print(bee.path[a],"PATH AAA AFTER ")
+                print(bee.path[b],"PATH BBB AFTER")
+                new_distance = bee.get_distance()
+                print(new_distance,"New distance")
+                print("_____________________")
+                if new_distance > old_distance:
+                    bee.path[a], bee.path[b] = bee.path[b], bee.path[a]
 
     def cross_bees():
         pass

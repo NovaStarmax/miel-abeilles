@@ -41,11 +41,17 @@ if __name__ == "__main__":
     flowers = get_flowers()
     h = Beehive(flowers)
 
-    print("Selected Bees:")
-    selected_bees = h.select_bees()
-    for i, bee in enumerate(selected_bees):
-        print(f"Bee {i + 1}: {bee}")
 
+    # print("before mutation")
+    # print(h)
+
+
+    # print("Selected Bees:")
+    # selected_bees = h.select_bees()
+    # for i, bee in enumerate(selected_bees):
+    #     print(f"Bee {i + 1}: {bee}")
+    
+    
     h.mutate_bees()
     print("After Mutation:")
     print(h)
