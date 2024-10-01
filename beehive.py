@@ -1,4 +1,4 @@
-from config import NB_BEES,SELECTED_BEES, MUTATION_RATE
+from config import NB_BEES,SELECTED_BEES
 from bee import Bee
 import random
 class Beehive:
@@ -21,34 +21,22 @@ class Beehive:
     def select_bees(self):
         bees_selected = int(len(self.bees) * SELECTED_BEES)
         self.sort_bees()
-        selected_bees = self.bees[:bees_selected]
-        return selected_bees
-
+        self.selected_bees = self.bees[:bees_selected]
+        print(self.bees[:bees_selected])
+        # print(self.selected_bees)
+        
     def mutate_bees(self):
-        # bees_mutated = self.bees * MUTATION_RATE
-        for bee in self.bees: #bees_mutated:
-            a = random.randint(1,len(bee.path)-2)
-            b = random.randint(1,len(bee.path)-2)
-            if bee.path[a] != bee.path[b]:
-                old_distance = bee.get_distance()
-                print("_____________________")
-                print(old_distance,"OLD distance")
-                print(bee.path[a],"PATH AAA BEFORE")
-                print(bee.path[b],"PATH BBB BEFORE")
-                bee.path[a], bee.path[b] = bee.path[b], bee.path[a]
-                print(bee.path[a],"PATH AAA AFTER ")
-                print(bee.path[b],"PATH BBB AFTER")
-                new_distance = bee.get_distance()
-                print(new_distance,"New distance")
-                print("_____________________")
-                if new_distance > old_distance:
-                    bee.path[a], bee.path[b] = bee.path[b], bee.path[a]
+        for bee in self.selected_bees:
+            bee.mutate()
 
-    def cross_bees():
-        pass
+    def cross_bees(self):
+        for i in range(len(self.selected_bees)-1):
+            bee_1 = self.selected_bees[i]
+            bee_2 = self.selected_bees[i+1]
+            bee_1.cross(bee_2)
 
     def reproduce_bees():
         pass
   
-    def __str__(self):
-        return '\n'.join([str(bee) for bee in self.bees])
+def __str__(self):
+    return '\n'.join([str(bee) for bee in self.bees])# + '\n'.join([str(bee) for bee in self.selected_bees])
