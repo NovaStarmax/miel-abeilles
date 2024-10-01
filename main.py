@@ -5,7 +5,7 @@ from beehive import Beehive
 def get_flowers():
     position_flowers = []
 
-    with open("flower.json", "r") as f:
+    with open("flower_10.json", "r") as f:
         data = json.load(f)
 
     for item in data:
