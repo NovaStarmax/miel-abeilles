@@ -24,6 +24,7 @@ if __name__ == "__main__":
 
     for i in range(NB_GEN):
         h.select_bees()
+        
         h.cross_bees()
         # h.mutate_bees()
         print(h)

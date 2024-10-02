@@ -23,7 +23,7 @@ class Beehive:
     def select_bees(self):
         bees_selected = int(len(self.bees) * SELECTED_BEES)
         self.sort_bees()
-        self.selected_bees = self.bees[:bees_selected]
+        self.bees = self.bees[:bees_selected]
         # print(self.bees[:bees_selected])
         # print(self.selected_bees)
 
@@ -32,13 +32,12 @@ class Beehive:
             bee.mutate()
 
     def cross_bees(self):
-        for i in range(len(self.selected_bees) - 1):
-            bee_1 = self.selected_bees[i]
-            bee_2 = self.selected_bees[i + 1]
+        for i in range(len(self.bees) - 1):
+            bee_1 = self.bees[i]
+            bee_2 = self.bees[i + 1]
             new_child = bee_1.cross(bee_2)
-            self.selected_bees.append(new_child)
-            
+            self.bees.append(new_child)
 
     def __str__(self):
-        bee_info = "\n".join([str(bee) for bee in self.selected_bees]) 
-        return f"Beehive with {len(self.selected_bees)} bees:\n{bee_info}"
+        bee_info = "\n".join([str(bee) for bee in self.bees]) 
+        return f"Beehive with {len(self.bees)} bees:\n{bee_info}"

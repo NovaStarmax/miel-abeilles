@@ -37,7 +37,7 @@ class Bee:
             
     def cross(bee_1, bee_2):
         segment_size = int(len(bee_1.path)/2)
-        child = bee_1.path[0:0+segment_size]
+        child = bee_1.path[0:segment_size]
         for f in bee_2.path:
             if f not in child:
                 child.append(f)
