@@ -1,4 +1,4 @@
-from config import NB_BEES, SELECTED_BEES
+from config import NB_BEES, SELECTION_RATE
 from bee import Bee
 import random
 
@@ -21,7 +21,7 @@ class Beehive:
         return self.bees.sort(key=lambda bee: bee.get_distance())
 
     def select_bees(self):
-        bees_selected = int(len(self.bees) * SELECTED_BEES)
+        bees_selected = int(len(self.bees) * SELECTION_RATE)
         self.sort_bees()
         self.bees = self.bees[:bees_selected]
         # print(self.bees[:bees_selected])
@@ -32,10 +32,12 @@ class Beehive:
             bee.mutate()
 
     def cross_bees(self):
-        for i in range(len(self.bees) - 1):
+        for i in range(NB_BEES - len(self.bees)):
+            # a = randint
+            # b= randint
             bee_1 = self.bees[i]
             bee_2 = self.bees[i + 1]
-            new_child = bee_1.cross(bee_2,)
+            new_child = bee_1.cross(bee_2)
             self.bees.append(new_child)
 
     def __str__(self):
