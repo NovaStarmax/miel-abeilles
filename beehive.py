@@ -28,15 +28,27 @@ class Beehive:
         # print(self.selected_bees)
 
     def mutate_bees(self):
-        for bee in self.selected_bees:
+        for bee in self.bees:
             bee.mutate()
 
+    def average_bees(self):
+        total = 0   
+        for bee in self.bees:
+            total += bee.get_distance()
+        average = total / NB_BEES 
+        return average
+
     def cross_bees(self):
-        for i in range(NB_BEES - len(self.bees)):
-            # a = randint
-            # b= randint
-            bee_1 = self.bees[i]
-            bee_2 = self.bees[i + 1]
+        for _ in range(NB_BEES - len(self.bees)):
+            # Félix a dit que nous pouvions aussi utiliser des samples
+
+            a = random.randint(0, len(self.bees) - 1)
+            b = random.randint(0, len(self.bees) - 1)
+            while a == b:
+                b = random.randint(0, len(self.bees) - 1)
+
+            bee_1 = self.bees[a]
+            bee_2 = self.bees[b]
             new_child = bee_1.cross(bee_2)
             self.bees.append(new_child)
 
