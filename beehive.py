@@ -35,7 +35,7 @@ class Beehive:
         for i in range(len(self.bees) - 1):
             bee_1 = self.bees[i]
             bee_2 = self.bees[i + 1]
-            new_child = bee_1.cross(bee_2)
+            new_child = bee_1.cross(bee_2,)
             self.bees.append(new_child)
 
     def __str__(self):
