@@ -8,17 +8,14 @@ class Beehive:
         self.hive_position = (500, 500)
         self.create_bees(flowers)
 
-    def create_bees(self, flowers):
-        self.bees = []
-        for _ in range(NB_BEES):
-            b = Bee(flowers)
-            self.bees.append(b)
-
+    def create_bees(self, flowers):            
+        self.bees = [Bee(flowers for _ in range(NB_BEES))]
+        
     def list_bees(self):
         return self.bees
 
     def sort_bees(self):
-        return self.bees.sort(key=lambda bee: bee.get_distance())
+        self.bees.sort(key=lambda bee: bee.get_distance())
 
     def select_bees(self):
         bees_selected = int(len(self.bees) * SELECTION_RATE)
@@ -30,9 +27,8 @@ class Beehive:
     def mutate_bees(self):
         nb_bees_to_mutate = int(len(self.bees) * MUTATION_RATE)
         # 100 bees-> 0,2% -> 20 bees donc mutate sur 20 bees et non sur tout self.bees 
-        for bee in self.bees: # on mutate sur tout self.bees
-            a = random.sample(self.bees, nb_bees_to_mutate)
-            # print(a)
+        bees = random.sample(self.bees, nb_bees_to_mutate)
+        for bee in bees: # on mutate sur tout self.bees
             bee.mutate()
 
 

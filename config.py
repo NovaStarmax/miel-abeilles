@@ -13,10 +13,10 @@ def get_flowers():
 
     return position_flowers
 
-AVERAGE_DISTANCES = [] 
+
 FLOWERS = get_flowers()
 SELECTION_RATE = 0.2
-MUTATION_RATE = 0.2
+MUTATION_RATE = 0.5
 # MUTATION_FREQUENCY = 0.2
 NB_BEES = 100
 NB_GEN = 1000
