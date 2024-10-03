@@ -34,8 +34,8 @@ class Bee:
         return self.distance
 
     def mutate(self):
-        a = random.randint(1,len(self.path)-2)
-        b = random.randint(1,len(self.path)-2)
+        a = random.randint(0,len(self.path)-1)
+        b = random.randint(0,len(self.path)-1)
         if a != b:
             self.path[a], self.path[b] = self.path[b], self.path[a]
             

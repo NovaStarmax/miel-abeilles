@@ -1,4 +1,4 @@
-from config import NB_BEES, SELECTION_RATE
+from config import NB_BEES, SELECTION_RATE, AVERAGE_DISTANCES, MUTATION_RATE
 from bee import Bee
 import random
 
@@ -28,8 +28,13 @@ class Beehive:
         # print(self.selected_bees)
 
     def mutate_bees(self):
-        for bee in self.bees:
+        nb_bees_to_mutate = int(len(self.bees) * MUTATION_RATE)
+        # 100 bees-> 0,2% -> 20 bees donc mutate sur 20 bees et non sur tout self.bees 
+        for bee in self.bees: # on mutate sur tout self.bees
+            a = random.sample(self.bees, nb_bees_to_mutate)
+            # print(a)
             bee.mutate()
+
 
     def average_bees(self):
         total = 0   
@@ -40,7 +45,6 @@ class Beehive:
 
     def cross_bees(self):
         for _ in range(NB_BEES - len(self.bees)):
-            # Félix a dit que nous pouvions aussi utiliser des samples
 
             a = random.randint(0, len(self.bees) - 1)
             b = random.randint(0, len(self.bees) - 1)
