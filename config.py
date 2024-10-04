@@ -15,8 +15,9 @@ def get_flowers(path):
 
 PATH = "flower.json"
 FLOWERS = get_flowers(PATH)
-SELECTION_RATE = 0.7
-MUTATION_RATE = 0.2
+SELECTION_RATE = 0.8
+MUTATION_RATE = 1
 # MUTATION_FREQUENCY = 0.2
 NB_BEES = 100
-NB_GEN = 500
+NB_GEN = 150
+CROSS_PART = 0.6

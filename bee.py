@@ -2,7 +2,7 @@ import math
 import random
 import copy
 
-from config import FLOWERS, MUTATION_RATE
+from config import FLOWERS, MUTATION_RATE, CROSS_PART
 HIVE =(500,500)
 
 class Bee:
@@ -18,7 +18,6 @@ class Bee:
 
     def create_path(self, flowers):
         self.path = random.sample(flowers, len(flowers))
-        random.shuffle(self.path)
 
     def compute_segment(self, pointA, pointD):
         dx = pointA[0] - pointD[0]
@@ -42,15 +41,14 @@ class Bee:
         bee = copy.copy(self)
 
         if a != b and random.random() < MUTATION_RATE:
-            # print("mutate", a, b)
             bee.path[a], bee.path[b] = bee.path[b], bee.path[a]
             self.compute_path()
         return bee
         
     def cross(bee_1, bee_2):
-        segment_size = int(len(bee_1.path)/2)
+        segment_size = int(len(bee_1.path)*CROSS_PART)
         child_path = bee_1.path[0:segment_size]
-        for f in random.sample(bee_2.path, len(bee_2.path)):
+        for f in bee_2.path:
             if f not in child_path:
                 child_path.append(f)
         return Bee(FLOWERS,path = child_path)
