@@ -1,9 +1,9 @@
 import json
 
-def get_flowers():
+def get_flowers(path):
     position_flowers = []
 
-    with open("flower.json", "r") as f:
+    with open(path, "r") as f:
         data = json.load(f)
 
     for item in data:
@@ -13,10 +13,10 @@ def get_flowers():
 
     return position_flowers
 
-
-FLOWERS = get_flowers()
-SELECTION_RATE = 0.2
-MUTATION_RATE = 0.5
+PATH = "flower.json"
+FLOWERS = get_flowers(PATH)
+SELECTION_RATE = 0.7
+MUTATION_RATE = 0.2
 # MUTATION_FREQUENCY = 0.2
 NB_BEES = 100
-NB_GEN = 1000
+NB_GEN = 500
