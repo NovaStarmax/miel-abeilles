@@ -13,8 +13,13 @@ class Beehive:
             b = Bee(flowers)
             self.bees.append(b)
 
+
+    def sort_bees(self):
+        return self.bees.sort(key=lambda bee: bee.get_distance())
+    
+
     def select_bees(self):
-        self.bees.sort(key=lambda bee: bee.distance)
+        self.sort_bees()
         selected_bees = self.bees[:int(len(self.bees) * SELECTION_RATE)]
         return selected_bees
 

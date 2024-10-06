@@ -20,4 +20,4 @@ MUTATION_RATE = 0.10 #Meilleur à 0,1
 MUTATION_FREQUENCY = 0.02 # Meilleur à 0,02
 NB_BEES = 100 
 NB_GEN = 1000 # Très bien à partir de 1000
-CROSS_PART = 0.6 #Meilleur à 0,6
+CROSS_PART = 0.5 #Meilleur à 0,6

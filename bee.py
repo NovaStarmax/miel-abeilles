@@ -34,11 +34,11 @@ class Bee:
     def get_distance(self):
         return self.distance
 
-    def mutate(self):
+    def mutate(self): #changement 
         nb_path_mutate = int(len(self.path) * MUTATION_FREQUENCY)
         for _ in range(nb_path_mutate):
-            i,j = random.sample(range(len(self.path)), 2)
-            self.path[i], self.path[j] = self.path[j], self.path[i]
+            a,b = random.sample(range(len(self.path)), 2)
+            self.path[a], self.path[b] = self.path[b], self.path[a]
         self.compute_path()
 
     def cross(self, bee_2):
