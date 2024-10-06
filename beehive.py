@@ -25,7 +25,7 @@ class Beehive:
         bees_selected = int(len(self.bees) * SELECTION_RATE)
         self.sort_bees()
         self.bees = self.bees[:bees_selected]
-        print(self.bees)
+        # print(self.bees)
 
     def mutate_bees(self):
         for _ in range(NB_BEES - len(self.bees)):
