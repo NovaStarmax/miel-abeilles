@@ -13,11 +13,11 @@ def get_flowers(path):
 
     return position_flowers
 
-PATH = "flower.json"
+PATH = "flowers.json"
 FLOWERS = get_flowers(PATH)
-SELECTION_RATE = 0.8
-MUTATION_RATE = 1
-# MUTATION_FREQUENCY = 0.2
-NB_BEES = 100
-NB_GEN = 150
-CROSS_PART = 0.6
+SELECTION_RATE = 0.2 # Meilleur à 0,2 
+MUTATION_RATE = 0.10 #Meilleur à 0,1 
+MUTATION_FREQUENCY = 0.02 # Meilleur à 0,02
+NB_BEES = 100 
+NB_GEN = 1000 # Très bien à partir de 1000
+CROSS_PART = 0.6 #Meilleur à 0,6

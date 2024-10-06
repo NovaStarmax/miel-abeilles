@@ -1,11 +1,10 @@
-from config import NB_BEES, SELECTION_RATE, MUTATION_RATE
-from bee import Bee
 import random
-
+from bee import Bee
+from config import NB_BEES, SELECTION_RATE, MUTATION_RATE
 
 class Beehive:
     def __init__(self, flowers):
-        self.hive_position = (500, 500)
+        self.flowers = flowers
         self.create_bees(flowers)
 
     def create_bees(self, flowers):
@@ -14,24 +13,28 @@ class Beehive:
             b = Bee(flowers)
             self.bees.append(b)
 
-    def list_bees(self):
-        return self.bees
-
-    def sort_bees(self):
-        return self.bees.sort(key=lambda bee: bee.get_distance())
-
-
     def select_bees(self):
-        bees_selected = int(len(self.bees) * SELECTION_RATE)
-        self.sort_bees()
-        self.bees = self.bees[:bees_selected]
-        # print(self.bees)
+        self.bees.sort(key=lambda bee: bee.distance)
+        selected_bees = self.bees[:int(len(self.bees) * SELECTION_RATE)]
+        return selected_bees
+
+    def cross_bees(self):
+        selected_bees = self.select_bees()
+        new_population = []
+
+        while len(new_population) < NB_BEES:
+            bee_1 = random.choice(selected_bees)
+            bee_2 = random.choice(selected_bees)
+            child = bee_1.cross(bee_2)
+            new_population.append(child)
+
+        self.bees = new_population
 
     def mutate_bees(self):
-        for _ in range(NB_BEES - len(self.bees)):
-            a = random.randint(0, len(self.bees) - 1)
-            new_bee = self.bees[a].mutate()
-            self.bees.append(new_bee)            
+        nb_bees_to_mutate = int(NB_BEES * MUTATION_RATE)
+        bees_to_mutate = random.sample(self.bees, nb_bees_to_mutate)
+        for bee in bees_to_mutate:
+            bee.mutate()
 
     def average_bees(self):
         total = 0   
@@ -39,18 +42,3 @@ class Beehive:
             total += bee.get_distance()
         average = total / NB_BEES 
         return average
-
-    def cross_bees(self):
-        for _ in range(NB_BEES - len(self.bees)):
-            a = random.randint(0, len(self.bees) - 1)
-            b = random.randint(0, len(self.bees) - 1)
-            while a == b:
-                b = random.randint(0, len(self.bees) - 1)
-            bee_1 = self.bees[a]
-            bee_2 = self.bees[b]
-            new_child = bee_1.cross(bee_2)
-            self.bees.append(new_child)
-
-    def __str__(self):
-        bee_info = "\n".join([str(bee) for bee in self.bees]) 
-        return f"Beehive with {len(self.bees)} bees:\n{bee_info}"

@@ -4,27 +4,46 @@ import matplotlib.pyplot as plt
 
 if __name__ == "__main__":
     h = Beehive(FLOWERS)
-    # print([bee.distance for bee in h.bees])
-    average_distances = [] 
+
+    average_distances = []
+    best_bees_generation = []
+
     for i in range(NB_GEN):
-        h.select_bees()
         h.cross_bees()
-        # avg = h.average_bees()
-        average_distances.append(h.average_bees())
-        
-    for j in range(NB_GEN):
-        h.select_bees()
         h.mutate_bees()
-        print(h)
-        # avg = h.average_bees()
         average_distances.append(h.average_bees())
 
-    plt.plot(average_distances, label="Average Distance", c ="red", lw = 1) 
+        get_best_bee = min(h.bees, key=lambda bee: bee.distance)
+        best_bees_generation.append(get_best_bee)
+    
+
+
+
+
+    master_bee = min(best_bees_generation, key=lambda bee: bee.distance)
+    master_bee_path = master_bee.path
+    master_bee_path.append((500, 500))  
+    master_bee_path.insert(0, (500, 500))
+    x = [flower[0] for flower in master_bee_path]
+    y = [flower[1] for flower in master_bee_path]
+
+
+
+
+    plt.figure()
+
+    plt.subplot(1, 2, 1)
+    plt.plot(average_distances, label="Average Distance", color="red", lw=1)
     plt.title("Evolution of generation")
     plt.xlabel("Generation")
     plt.ylabel("Average distance")
     plt.legend()
+   
+    plt.subplot(1, 2, 2)
+    plt.plot(x, y, 'o--', color="green", label="Best Bee Path")
+    plt.title("Best Bee Path of All Generation")
+    plt.xlabel("X")
+    plt.ylabel("Y")
+    plt.legend()
 
     plt.show()
-
-        
