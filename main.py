@@ -28,17 +28,16 @@ if __name__ == "__main__":
     best_bee_distance = master_bee.get_distance()
 
 
-    # plt.figure()
+    plt.figure()
 
-    # plt.subplot(1, 2, 1)
+    plt.subplot(1, 2, 1)
     plt.plot(average_distances, label="Average Distance", color="red", lw=1)
     plt.title("Evolution of generation")
     plt.xlabel("Generation")
     plt.ylabel("Average distance")
     plt.legend()
-    plt.show()
 
-    # plt.subplot(1, 2, 2)
+    plt.subplot(1, 2, 2)
     plt.plot(x, y, 'o--', color="green", label="Best Bee Path")
     plt.title("Best Bee Path of All Generation")
     plt.text(0.5, 0.5,f"Final Distance: {best_bee_distance:.2f}")
@@ -46,5 +45,5 @@ if __name__ == "__main__":
     plt.ylabel("Y")
     plt.legend()
 
-    # plt.tight_layout()
+
     plt.show()
