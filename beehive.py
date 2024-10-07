@@ -19,8 +19,9 @@ class Beehive:
     
 
     def select_bees(self):
+        nb_selected = int(len(self.bees) * SELECTION_RATE)
         self.sort_bees()
-        selected_bees = self.bees[:int(len(self.bees) * SELECTION_RATE)]
+        selected_bees = self.bees[:nb_selected]
         return selected_bees
 
     def cross_bees(self):
@@ -30,6 +31,8 @@ class Beehive:
         while len(new_population) < NB_BEES:
             bee_1 = random.choice(selected_bees)
             bee_2 = random.choice(selected_bees)
+            while bee_1 == bee_2:
+                bee_2 = random.choice(selected_bees)
             child = bee_1.cross(bee_2)
             new_population.append(child)
 
