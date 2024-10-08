@@ -8,7 +8,7 @@ if __name__ == "__main__":
     average_distances = []
     best_bees_generation = []
 
-    for i in range(NB_GEN):
+    for _ in range(NB_GEN):
         h.cross_bees()
         h.mutate_bees()
         average_distances.append(h.average_bees())
