@@ -44,8 +44,6 @@ class Beehive:
             bee.mutate()
 
     def average_bees(self):
-        total = 0
-        for bee in self.bees:
-            total += bee.get_distance()
+        total = sum(bee.get_distance() for bee in self.bees)
         average = total / NB_BEES
         return average
