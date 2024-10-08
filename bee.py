@@ -2,13 +2,15 @@ import math
 import random
 
 from config import FLOWERS, CROSS_PART, MUTATION_FREQUENCY
-HIVE =(500,500)
+
+HIVE = (500, 500)
+
 
 class Bee:
-    def __init__(self, flowers, path = []):
-        if len(path)==0:
+    def __init__(self, flowers, path=[]):
+        if len(path) == 0:
             self.create_path(flowers)
-        else: 
+        else:
             self.path = path
         self.compute_path()
 
@@ -24,20 +26,20 @@ class Bee:
         return math.sqrt(dx**2 + dy**2)
 
     def compute_path(self):
-        self.distance =  self.compute_segment(HIVE, self.path[0])
+        self.distance = self.compute_segment(HIVE, self.path[0])
         for i in range(len(self.path) - 1):
             flower_1 = self.path[i]
             flower_2 = self.path[i + 1]
-            self.distance += self.compute_segment(flower_1,flower_2)
-        self.distance += self.compute_segment(self.path[-1], HIVE)      
+            self.distance += self.compute_segment(flower_1, flower_2)
+        self.distance += self.compute_segment(self.path[-1], HIVE)
 
     def get_distance(self):
         return self.distance
 
-    def mutate(self): #changement 
+    def mutate(self):  # changement
         nb_path_mutate = int(len(self.path) * MUTATION_FREQUENCY)
         for _ in range(nb_path_mutate):
-            a,b = random.sample(range(len(self.path)), 2)
+            a, b = random.sample(range(len(self.path)), 2)
             self.path[a], self.path[b] = self.path[b], self.path[a]
         self.compute_path()
 

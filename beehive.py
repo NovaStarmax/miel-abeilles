@@ -2,6 +2,7 @@ import random
 from bee import Bee
 from config import NB_BEES, SELECTION_RATE, MUTATION_RATE
 
+
 class Beehive:
     def __init__(self, flowers):
         self.flowers = flowers
@@ -13,10 +14,8 @@ class Beehive:
             b = Bee(flowers)
             self.bees.append(b)
 
-
     def sort_bees(self):
         return self.bees.sort(key=lambda bee: bee.get_distance())
-    
 
     def select_bees(self):
         nb_selected = int(len(self.bees) * SELECTION_RATE)
@@ -45,8 +44,8 @@ class Beehive:
             bee.mutate()
 
     def average_bees(self):
-        total = 0   
+        total = 0
         for bee in self.bees:
             total += bee.get_distance()
-        average = total / NB_BEES 
+        average = total / NB_BEES
         return average
